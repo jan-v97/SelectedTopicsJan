@@ -28,15 +28,14 @@ sibling(const quadrant_t* q, quadrant_t* sibling_quadrant, int sibling_id)
 	// we compute the size
 	int h = QUADRANT_LEN(q->level);
 	// compute parent coordinates
-	(sibling_id & 1) ? sibling_quadrant->x = q->x | h : sibling_quadrant->x = q->x & ~h;
-	(sibling_id & 2) ? sibling_quadrant->y = q->y | h : sibling_quadrant->y = q->y & ~h;
-	(sibling_id & 4) ? sibling_quadrant->z = q->z | h : sibling_quadrant->z = q->z & ~h;
+	sibling_quadrant->x = (sibling_id & 1) ? (q->x | h) : (q->x & ~h);
+	sibling_quadrant->y = (sibling_id & 2) ? (q->y | h) : (q->y & ~h);
+	sibling_quadrant->z = (sibling_id & 4) ? (q->z | h) : (q->z & ~h);
 }
 
 void
 first_descendant(const quadrant_t* q, quadrant_t* first_descendant, int level)
 {
-	qcoord_t            shift;
 #if 0
 	if (!is_valid(q)) {
 		printf("first_descendant: the input quadrant has to be valid.\n");

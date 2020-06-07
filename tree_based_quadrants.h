@@ -9,7 +9,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <cstdint>
+#include <stdint.h>
 
 #define MAXLEVEL 19
 
